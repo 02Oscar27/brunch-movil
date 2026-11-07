@@ -1,15 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
+
+    <ion-title> Brunch Móvil </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+  <section>
+
+    <h1>Bienvenidos a {{ nombreRestaurante }}</h1>
+
+    <p>{{ descripcion }}</p>
+
+    <ion-button expand="block" routerLink="/tabs/tab2">
+      Explorar menú
+    </ion-button>
+  </section>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Un lugar para disfrutar</ion-card-title>
+    </ion-card-header>
+      
+    <ion-card-content>
+      Descubre nuestros platos preparados con ingredientes
+      frescos y disfruta de una experiencia especial.
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Horarios de atención</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ horario }}
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-button expand="block" fill="outline" routerLink="/tabs/tab3">
+    Realizar reserva
+  </ion-button>
+
+  </ion-content>

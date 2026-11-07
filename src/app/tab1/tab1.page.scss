@@ -1,0 +1,37 @@
+//Seccion principal de bienvenida
+.bienvenida {
+    text-align: center;
+    padding: 24px 12px;
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color:#543b30;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    
+}
+}
+
+// Tarjetas informativas
+ion-card {
+    margin: 16px 0;
+    border-radius: 14px;
+}
+
+ion-card-title {
+    color:#543b30;
+    font-size: 19px;
+
+}
+
+// Botones
+ion-button {
+    margin-top: 16px;
+    --border-radius: 10px;
+}
