@@ -1,0 +1,121 @@
+:host {
+  --cream: #f5f0e6;
+  --green: #8a9a5b;
+  --brown: #3d3a32;
+  --terracotta: #a66a4c;
+}
+ion-toolbar {
+  --background: #f5f0e6;
+  --color: #3d3a32;
+}
+ion-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+ion-button {
+  --color: #3d3a32;
+  position: relative;
+}
+ion-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+  font-size: 0.65rem;
+}
+.menu-content {
+  --background: #fbf9f4;
+}
+.menu-intro {
+  padding: 27px 20px 15px;
+  background: #f5f0e6;
+}
+.eyebrow {
+  color: #8a9a5b;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+h1 {
+  margin: 8px 0;
+  color: #3d3a32;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.02;
+}
+h1 em {
+  color: #a66a4c;
+  font-weight: 400;
+}
+.menu-intro > p:last-child {
+  color: #777267;
+  font-size: 0.9rem;
+}
+.filters {
+  padding: 12px 12px 4px;
+  background: #fbf9f4;
+}
+ion-searchbar {
+  --background: white;
+  --border-radius: 12px;
+  --box-shadow: 0 2px 12px #3d3a320c;
+  padding: 0 0 10px;
+}
+ion-segment {
+  --background: #f0ece3;
+  border-radius: 12px;
+}
+ion-segment-button {
+  --indicator-color: #8a9a5b;
+  --color: #716e65;
+  --color-checked: white;
+  min-height: 38px;
+  font-size: 0.75rem;
+}
+.product-grid {
+  max-width: 1100px;
+  padding: 14px 12px 20px;
+}
+.product-grid ion-col {
+  padding: 7px;
+}
+.loading-state,
+.empty-state {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #777267;
+  text-align: center;
+  padding: 24px;
+}
+.loading-state ion-spinner {
+  color: #8a9a5b;
+}
+.price-disclaimer {
+  margin: 9px 18px 0;
+  color: #918b7e;
+  font-size: 0.7rem;
+}
+.api-note {
+  margin: 8px 18px 0;
+  font-size: 0.75rem;
+}
+.bottom-space {
+  height: 20px;
+}
+@media (min-width: 700px) {
+  .menu-intro,
+  .filters {
+    padding-left: max(24px, calc((100% - 900px) / 2));
+    padding-right: max(24px, calc((100% - 900px) / 2));
+  }
+  .product-grid {
+    margin: auto;
+    padding: 22px;
+  }
+  .product-grid ion-col {
+    padding: 10px;
+  }
+}

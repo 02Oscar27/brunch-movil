@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-button slot="start" fill="clear" routerLink="/tabs/tab2" aria-label="Volver al menú">
+      <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-title>Mi carrito</ion-title>
+    @if (cart.totalItems() > 0) { <ion-badge slot="end" color="success">{{ cart.totalItems() }}</ion-badge> }
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="cart-content">
+  <section class="cart-heading">
+    <p class="eyebrow">TU PEDIDO</p>
+    <h1>Lo que se te<br /><em>antojó.</em></h1>
+  </section>
+
+  @if (cart.items().length === 0) {
+  <div class="empty-cart">
+    <div class="empty-icon">☕</div>
+    <h2>Tu carrito está vacío</h2>
+    <p>Hay algo delicioso esperándote en nuestro menú.</p>
+    <ion-button routerLink="/tabs/tab2">Explorar menú</ion-button>
+  </div>
+  } @else {
+  <ion-list class="cart-list" lines="none">
+    @for (item of cart.items(); track item.producto.id) {
+    <ion-item class="cart-item">
+      <ion-thumbnail slot="start"><img [src]="item.producto.imagen" [alt]="item.producto.nombre" /></ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.producto.nombre }}</h2>
+        <p>{{ item.producto.precio | currency:'COP':'symbol-narrow':'1.0-0' }} c/u</p>
+        <div class="quantity-control">
+          <ion-button
+            fill="outline"
+            size="small"
+            (click)="cart.decrease(item.producto.id)"
+            aria-label="Disminuir cantidad"
+            ><ion-icon name="remove-outline"></ion-icon
+          ></ion-button>
+          <strong>{{ item.cantidad }}</strong>
+          <ion-button fill="outline" size="small" (click)="cart.add(item.producto)" aria-label="Aumentar cantidad"
+            ><ion-icon name="add-outline"></ion-icon
+          ></ion-button>
+        </div>
+      </ion-label>
+      <div class="item-end">
+        <strong>{{ item.producto.precio * item.cantidad | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+        <ion-button
+          fill="clear"
+          color="danger"
+          size="small"
+          (click)="cart.remove(item.producto.id)"
+          aria-label="Eliminar producto"
+          ><ion-icon name="trash-outline"></ion-icon
+        ></ion-button>
+      </div>
+    </ion-item>
+    }
+  </ion-list>
+
+  <ion-card class="summary-card">
+    <ion-card-content>
+      <div class="summary-line">
+        <span>Productos ({{ cart.totalItems() }})</span
+        ><strong>{{ cart.total() | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+      </div>
+      <div class="summary-line total-line">
+        <span>Total</span><strong>{{ cart.total() | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+      </div>
+      <p class="summary-note">El valor es una simulación académica. El pedido no se envía ni se cobra.</p>
+      <ion-button expand="block" (click)="cart.clear()">Vaciar carrito</ion-button>
+      <ion-button expand="block" fill="outline" routerLink="/tabs/tab2">Seguir comprando</ion-button>
+    </ion-card-content>
+  </ion-card>
+  }
+</ion-content>
