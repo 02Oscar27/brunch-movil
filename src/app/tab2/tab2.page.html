@@ -1,15 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Tab 2 </ion-title>
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Menú Brunch</ion-title>
+    <ion-button slot="end" fill="clear" (click)="loadProducts(true)" aria-label="Actualizar menú">
+      <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" routerLink="/tabs/carrito" aria-label="Abrir carrito">
+      <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
+      @if (cart.totalItems() > 0) { <ion-badge color="success">{{ cart.totalItems() }}</ion-badge> }
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="menu-content">
+  <section class="menu-intro">
+    <p class="eyebrow">BRUNCH MÓVIL</p>
+    <h1>Un buen día<br /><em>comienza aquí.</em></h1>
+    <p>Explora nuestros platos y arma tu brunch favorito.</p>
+  </section>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="filters">
+    <ion-searchbar
+      placeholder="Buscar un plato..."
+      [debounce]="250"
+      (ionInput)="onSearch($event)"
+      aria-label="Buscar platos"
+    ></ion-searchbar>
+    <ion-segment [value]="selectedCategory" (ionChange)="selectedCategory = $any($event).detail.value" scrollable>
+      @for (category of categories; track category) {
+      <ion-segment-button [value]="category"><ion-label>{{ category }}</ion-label></ion-segment-button>
+      }
+    </ion-segment>
+  </div>
+
+  @if (usingLocalMenu && !loading) {
+  <ion-text color="medium"
+    ><p class="api-note">Mostrando el menú de respaldo. No fue posible conectar con el servicio externo.</p></ion-text
+  >
+  } @if (loading) {
+  <div class="loading-state">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando nuestro menú...</p>
+  </div>
+  } @else {
+  <ion-grid fixed class="product-grid" aria-label="Productos disponibles">
+    <ion-row>
+      @for (product of filteredProducts; track product.id) {
+      <ion-col size="12" size-sm="6" size-lg="4">
+        <app-product-card [product]="product" (add)="addToCart($event)"></app-product-card>
+      </ion-col>
+      } @empty {
+      <ion-col size="12">
+        <div class="empty-state">
+          <h2>No encontramos platos</h2>
+          <p>Prueba con otra búsqueda o categoría.</p>
+        </div>
+      </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+  }
+  <div class="bottom-space"></div>
+  <ion-toast
+    [isOpen]="toastOpen"
+    [message]="toastMessage"
+    duration="1800"
+    position="bottom"
+    color="success"
+    (didDismiss)="closeToast()"
+  ></ion-toast>
 </ion-content>
