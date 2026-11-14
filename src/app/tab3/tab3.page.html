@@ -1,15 +1,102 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title> Tab 3 </ion-title>
+    <ion-title>Reservas | Brunch</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <h2>Reserva tu mesa</h2>
+  <p>Completa la siguiente informacion.</p>
+
+  <!-- Datos del cliente -->
+  <ion-list>
+
+    <ion-item>
+      <ion-input
+      label="Nombre completo"
+      labelPlacement="stacked"
+      placeholder="Ingresa tu nombre"
+      type="text"
+      [maxlength]="60"
+      
+      [(ngModel)]="nombre">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Teléfono"
+      labelPlacement="stacked"
+      type="tel"
+      placeholder="Ingresa tu numero de contacto"
+      [(ngModel)]="telefono">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+      label="Número de personas"
+      labelPlacement="stacked"
+      placeholder="Seleccione el numero de personas"
+      [(ngModel)]="personas">
+
+      <ion-select-option [value]="1">1 persona</ion-select-option>
+      <ion-select-option [value]="2">2 personas</ion-select-option>
+      <ion-select-option [value]="3">3 personas</ion-select-option>
+      <ion-select-option [value]="4">4 personas</ion-select-option>
+      <ion-select-option [value]="5">5 personas</ion-select-option>
+      <ion-select-option [value]="6">6 personas</ion-select-option>
+      <ion-select-option [value]="7">7 personas</ion-select-option>
+      <ion-select-option [value]="8">8 personas</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- Seleccionar fecha y hora -->
+  <h3>Fecha y hora de la reserva</h3>
+
+    <ion-datetime
+    presentation="date-time"
+    locale="es-CO"
+    [hourValues]="horasPermitidas"
+    [minuteValues]="minutosPermitidos"
+    [showDefaultButtons]="true"
+    doneText="Aceptar"
+    cancelText="Cancelar"
+    [(ngModel)]="fechaHora">
+    </ion-datetime>
+  
+  <!-- Validar información -->
+  <ion-button
+  expand="block"
+  (click)="validarReserva()">
+  Validar reserva
+  </ion-button>
+
+  <ion-button
+  expand="block"
+  fill="outline"
+  (click)="consultarReserva()">
+    Ver última reserva
+  </ion-button>
+
+  <!-- Mensaje de respuesta -->
+  <ion-toast
+  [isOpen]="mostrarToast"
+  [message]="mensaje"
+  [duration]="3000"
+  (didDismiss)="mostrarToast = false">
+  </ion-toast>
+
+  <ion-alert
+    [isOpen]="mostrarConfirmacion"
+    header="Confirmar reserva"
+    [message]="detalleReserva"
+    [buttons]="botonesConfirmacion"
+    (didDismiss)="mostrarConfirmacion = false">
+  </ion-alert>
+
 </ion-content>
