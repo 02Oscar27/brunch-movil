@@ -1,37 +1,90 @@
-//Seccion principal de bienvenida
+ion-content.home-content {
+  --background: var(--brunch-bg);
+}
+
 .bienvenida {
-    text-align: center;
-    padding: 24px 12px;
-
-h1 {
-    font-size: 26px;
-    font-weight: bold;
-    color:#543b30;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  padding: 34px 24px 30px;
+  margin: 0 -16px 22px;
+  background:
+    radial-gradient(circle at 88% 18%, #E8D9C7 0, #E8D9C700 28%),
+    linear-gradient(135deg, #FFF8ED 0%, #F4E6D7 100%);
+  border-radius: 0 0 30px 30px;
 }
 
-p {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    
-}
+.bienvenida::before {
+  content: "☕";
+  position: absolute;
+  right: 22px;
+  bottom: 12px;
+  font-size: clamp(4rem, 18vw, 7rem);
+  opacity: 0.12;
+  transform: rotate(-12deg);
 }
 
-// Tarjetas informativas
+.bienvenida h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 4px 0 12px;
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  line-height: 1.08;
+  font-weight: 500;
+}
+
+.bienvenida p {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  color: var(--brunch-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.bienvenida ion-button {
+  position: relative;
+  z-index: 1;
+  max-width: 260px;
+  --background: var(--brunch-primary-strong);
+  --color: #FFFFFF;
+  --border-radius: 14px;
+  min-height: 48px;
+}
+
 ion-card {
-    margin: 16px 0;
-    border-radius: 14px;
+  margin: 16px 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+ion-card-header {
+  padding-bottom: 8px;
 }
 
 ion-card-title {
-    color:#543b30;
-    font-size: 19px;
-
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-// Botones
-ion-button {
-    margin-top: 16px;
-    --border-radius: 10px;
+ion-card-content {
+  color: var(--brunch-muted);
+  line-height: 1.65;
+}
+
+ion-content > ion-button {
+  margin: 20px 0 10px;
+  --border-radius: 14px;
+  min-height: 46px;
+}
+
+ion-content > ion-button[fill="outline"] {
+  --color: var(--brunch-primary-strong);
+  --border-color: #A8B58A;
 }

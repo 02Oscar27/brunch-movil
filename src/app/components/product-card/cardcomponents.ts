@@ -1,16 +1,31 @@
 import { Component, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import {IonButton,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,
-  IonIcon,IonImg,} from '@ionic/angular';
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonIcon,
+  IonImg,
+} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
 import { Product } from '../../models/product-model';
 
 @Component({
   selector: 'app-product-card',
-  standalone: true,
-  imports: [CurrencyPipe,IonButton,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,
-    IonCardTitle,IonIcon,IonImg,
+  imports: [
+    CurrencyPipe,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonIcon,
+    IonImg,
   ],
   template: `
     <ion-card class="product-card">
@@ -36,16 +51,23 @@ import { Product } from '../../models/product-model';
   styles: [
     `
       .product-card {
+        --background: #FFFFFF;
+        --color: var(--brunch-text);
         margin: 0;
         height: 100%;
-        border-radius: 18px;
+        border: 1px solid var(--brunch-line);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 5px 18px #3d3a3214;
+        box-shadow: 0 7px 22px var(--brunch-shadow);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .product-card:active {
+        transform: scale(0.985);
       }
       .image-wrap {
-        height: 165px;
+        height: 180px;
         overflow: hidden;
-        background: #eee8dc;
+        background: var(--brunch-surface-alt);
       }
       ion-img {
         width: 100%;
@@ -53,51 +75,69 @@ import { Product } from '../../models/product-model';
         object-fit: cover;
       }
       ion-card-header {
-        padding: 13px 14px 5px;
+        padding: 14px 15px 5px;
       }
       ion-card-title {
-        color: #3d3a32;
-        font-size: 1.05rem;
+        color: var(--brunch-text);
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.12rem;
         font-weight: 700;
+        line-height: 1.25;
       }
       ion-card-subtitle {
-        color: #8a9a5b;
+        color: var(--brunch-primary-strong);
         text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        font-size: 0.67rem;
+        font-weight: 800;
       }
       ion-card-content {
-        padding: 5px 14px 14px;
+        padding: 5px 15px 15px;
       }
       .description {
-        color: #6d6a61;
+        color: var(--brunch-muted);
         min-height: 42px;
-        font-size: 0.83rem;
-        line-height: 1.45;
+        font-size: 0.84rem;
+        line-height: 1.5;
       }
       .ingredients {
-        color: #858176;
-        font-size: 0.72rem;
-        line-height: 1.4;
+        color: var(--brunch-muted);
+        font-size: 0.73rem;
+        line-height: 1.45;
         min-height: 32px;
+      }
+      .ingredients strong {
+        color: var(--brunch-text);
       }
       .card-footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 8px;
-        margin-top: 10px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--brunch-line);
       }
       .price {
-        color: #a66a4c;
-        font-size: 1rem;
+        color: var(--brunch-accent);
+        font-size: 1.05rem;
+        font-weight: 800;
         white-space: nowrap;
       }
       ion-button {
-        --background: #8a9a5b;
-        --border-radius: 10px;
-        font-size: 0.75rem;
+        --background: var(--brunch-primary-strong);
+        --background-hover: #718253;
+        --color: #FFFFFF;
+        --border-radius: 12px;
+        font-size: 0.76rem;
+        font-weight: 700;
         margin: 0;
+      }
+      @media (hover: hover) {
+        .product-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 28px #80634F26;
+        }
       }
     `,
   ],
@@ -105,6 +145,7 @@ import { Product } from '../../models/product-model';
 export class ProductCardComponent {
   readonly product = input.required<Product>();
   readonly add = output<Product>();
+
   constructor() {
     addIcons({ addOutline });
   }

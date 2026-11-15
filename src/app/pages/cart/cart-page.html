@@ -49,7 +49,7 @@
           fill="clear"
           color="danger"
           size="small"
-          (click)="cart.remove(item.producto.id)"
+          (click)="removeProduct(item.producto.id, item.producto.nombre)"
           aria-label="Eliminar producto"
           ><ion-icon name="trash-outline"></ion-icon
         ></ion-button>
@@ -67,10 +67,49 @@
       <div class="summary-line total-line">
         <span>Total</span><strong>{{ cart.total() | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
       </div>
-      <p class="summary-note">El valor es una simulación académica. El pedido no se envía ni se cobra.</p>
-      <ion-button expand="block" (click)="cart.clear()">Vaciar carrito</ion-button>
-      <ion-button expand="block" fill="outline" routerLink="/tabs/tab2">Seguir comprando</ion-button>
+      <ion-button
+        expand="block"
+        class="purchase-button"
+        (click)="completePurchase()"
+      >
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Realizar compra
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        class="clear-cart-button"
+        fill="outline"
+        color="danger"
+        (click)="confirmClearCart()"
+      >
+        <ion-icon name="trash-outline" slot="start"></ion-icon>
+        Vaciar carrito
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" routerLink="/tabs/tab2">
+        Seguir comprando
+      </ion-button>
     </ion-card-content>
   </ion-card>
   }
 </ion-content>
+
+
+<!-- Confirmación antes de eliminar todos los productos -->
+<ion-alert
+  [isOpen]="clearAlertOpen"
+  header="Vaciar carrito"
+  message="¿Estás seguro de que deseas eliminar todos los productos?"
+  [buttons]="clearAlertButtons"
+  (didDismiss)="clearAlertOpen = false"
+></ion-alert>
+
+<!-- Mensajes de confirmación de las acciones del carrito -->
+<ion-toast
+  [isOpen]="toastOpen"
+  [message]="toastMessage"
+  duration="2200"
+  position="bottom"
+  (didDismiss)="toastOpen = false"
+></ion-toast>

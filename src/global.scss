@@ -1,37 +1,114 @@
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Tema visual Brunch Móvil
+ * Paleta pastel clara: crema, beige, salvia y durazno.
  */
-
-/* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Se fuerza el tema claro para conservar los tonos pastel en cualquier equipo. */
+:root {
+  color-scheme: light;
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+  --brunch-cream: #FFF8ED;
+  --brunch-sun-soft: #F8EBDD;
+  --brunch-bg: #FFFCF7;
+  --brunch-surface: #FFFFFF;
+  --brunch-surface-alt: #F5EDE2;
+  --brunch-text: #514237;
+  --brunch-muted: #8B7B6D;
+  --brunch-primary: #A8B58A;
+  --brunch-primary-strong: #7F9161;
+  --brunch-on-primary: #FFFFFF;
+  --brunch-accent: #B9795B;
+  --brunch-line: #EDE2D4;
+  --brunch-danger: #B96860;
+  --brunch-danger-bg: #FFF0ED;
+  --brunch-shadow: #80634F1A;
+
+  /* Compatibilidad con estilos de componentes que usan estos nombres. */
+  --brunch-green: #A8B58A;
+  --brunch-on-green: #35402B;
+  --brunch-terracotta: #B9795B;
+
+  --ion-background-color: var(--brunch-bg);
+  --ion-text-color: var(--brunch-text);
+  --ion-color-primary: #8D9D6C;
+  --ion-color-primary-rgb: 141, 157, 108;
+  --ion-color-primary-contrast: #FFFFFF;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #7C8A5F;
+  --ion-color-primary-tint: #A0AD81;
+  --ion-color-secondary: #D9B39F;
+  --ion-color-tertiary: #E8D8C4;
+  --ion-color-success: #82966A;
+  --ion-color-warning: #D9AD70;
+  --ion-color-danger: #B96860;
+  --ion-toolbar-background: var(--brunch-cream);
+  --ion-item-background: var(--brunch-surface);
+  --ion-card-background: var(--brunch-surface);
+  --ion-font-family: 'Nun', 'Segoe UI', sans-serif;
+}
+
+html, body, ion-app {
+  background: var(--brunch-bg);
+  color: var(--brunch-text);
+  font-family: 'Nun', 'Segoe UI', sans-serif;
+}
+
+ion-content {
+  --background: var(--brunch-bg);
+  color: var(--brunch-text);
+}
+
+ion-toolbar {
+  --background: var(--brunch-cream);
+  --color: var(--brunch-text);
+  --border-color: var(--brunch-line);
+}
+
+ion-title {
+  color: var(--brunch-text);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+ion-button {
+  --border-radius: 14px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+ion-card {
+  --background: var(--brunch-surface);
+  --color: var(--brunch-text);
+  border: 1px solid var(--brunch-line);
+  box-shadow: 0 7px 22px var(--brunch-shadow);
+}
+
+ion-item {
+  --background: var(--brunch-surface);
+  --color: var(--brunch-text);
+  --border-color: var(--brunch-line);
+}
+
+ion-searchbar {
+  --background: #FFFFFF;
+  --color: var(--brunch-text);
+  --placeholder-color: #A99B8E;
+  --icon-color: #9B8C7D;
+  --border-radius: 16px;
+}
+
+ion-toast {
+  --border-radius: 14px;
+  --box-shadow: 0 8px 24px #51423726;
+}
