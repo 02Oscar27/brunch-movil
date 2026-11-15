@@ -1,33 +1,79 @@
-h2 {
-    color: #543b30;
-    font-weight: bold;
-    font-size: 24px;
+ion-content.reservation-content {
+  --background: var(--brunch-bg);
 }
 
-p {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 20px;
+.reservation-content > h2 {
+  margin: 26px 0 7px;
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-h3 {
-    color: #543b30;
-    font-size: 18px;
-    margin-top: 24px;
-    margin-bottom: 16px;
+.reservation-content > p {
+  color: var(--brunch-muted);
+  font-size: 0.95rem;
+  margin: 0 0 22px;
 }
 
 ion-list {
-    border-radius: 12px;
-    margin-bottom: 20px;
+  margin: 14px 0 24px;
+  padding: 4px 12px;
+  background: var(--brunch-surface);
+  border: 1px solid var(--brunch-line);
+  border-radius: 18px;
+  box-shadow: 0 5px 18px var(--brunch-shadow);
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: var(--brunch-line);
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+}
+
+ion-input,
+ion-select {
+  --color: var(--brunch-text);
+  --placeholder-color: #A99B8E;
+  --highlight-color-focused: var(--brunch-primary-strong);
+}
+
+.reservation-content > h3 {
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  margin: 28px 0 14px;
 }
 
 ion-datetime {
-    margin: 0 auto;
-    border-radius: 12px;
+  display: block;
+  margin: 0 auto 24px;
+  max-width: 100%;
+  border: 1px solid var(--brunch-line);
+  border-radius: 20px;
+  background: var(--brunch-surface);
+  box-shadow: 0 5px 18px var(--brunch-shadow);
+  --background: var(--brunch-surface);
+  --background-rgb: 255, 255, 255;
+  --title-color: var(--brunch-text);
+  --wheel-highlight-background: #E8EEDC;
+  --wheel-fade-background-rgb: 255, 255, 255;
+  --ion-color-primary: #829466;
 }
 
-ion-button {
-    margin-top: 24px;
-    --border-raidus: 10px;
+.reservation-content > ion-button {
+  margin: 13px 0;
+  min-height: 48px;
+  --border-radius: 14px;
+}
+
+.reservation-content > ion-button:not([fill="outline"]) {
+  --background: var(--brunch-primary-strong);
+  --color: #FFFFFF;
+}
+
+.reservation-content > ion-button[fill="outline"] {
+  --color: var(--brunch-primary-strong);
+  --border-color: var(--brunch-primary);
 }

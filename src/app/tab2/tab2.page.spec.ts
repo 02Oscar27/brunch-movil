@@ -14,10 +14,13 @@ describe('Tab2Page', () => {
       imports: [Tab2Page],
       providers: [provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
+
     fixture = TestBed.createComponent(Tab2Page);
     component = fixture.componentInstance;
     httpMock = TestBed.inject(HttpTestingController);
-    fixture.detectChanges();
+
+    // La petición se lanza en el constructor; la API responde sin recetas,
+    // así que la página usa el menú local de respaldo.
     httpMock.expectOne('https://dummyjson.com/recipes?limit=30').flush({ recipes: [] });
     fixture.detectChanges();
   });
@@ -26,8 +29,18 @@ describe('Tab2Page', () => {
 
   it('should create', () => expect(component).toBeTruthy());
 
+  it('usa el menú local cuando la API no devuelve recetas', () => {
+    expect(component.usingLocalMenu()).toBe(true);
+    expect(component.products().length).toBeGreaterThan(0);
+  });
+
   it('filtra los productos por texto', () => {
-    component.search = 'pancakes';
-    expect(component.filteredProducts.length).toBe(1);
+    component.search.set('pancakes');
+    expect(component.filteredProducts().length).toBe(1);
+  });
+
+  it('filtra los productos por categoría', () => {
+    component.selectedCategory.set('Saludables');
+    expect(component.filteredProducts().every((p) => p.categoria === 'Saludables')).toBe(true);
   });
 });

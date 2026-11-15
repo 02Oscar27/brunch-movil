@@ -1,120 +1,187 @@
-:host {
-  --cream: #f5f0e6;
-  --green: #8a9a5b;
-  --brown: #3d3a32;
-  --terracotta: #a66a4c;
-}
 ion-toolbar {
-  --background: #f5f0e6;
-  --color: #3d3a32;
+  --background: var(--brunch-cream);
+  --color: var(--brunch-text);
+  --border-color: var(--brunch-line);
 }
+
 ion-title {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-ion-button {
-  --color: #3d3a32;
+
+ion-toolbar ion-button {
+  --color: var(--brunch-text);
   position: relative;
 }
+
 ion-badge {
+  --background: var(--brunch-accent);
+  --color: #FFFFFF;
   position: absolute;
   top: 0;
   right: 0;
   border-radius: 20px;
   font-size: 0.65rem;
 }
+
 .menu-content {
-  --background: #fbf9f4;
+  --background: var(--brunch-bg);
+  color: var(--brunch-text);
 }
+
 .menu-intro {
-  padding: 27px 20px 15px;
-  background: #f5f0e6;
+  position: relative;
+  overflow: hidden;
+  padding: 30px 20px 22px;
+  background:
+    radial-gradient(circle at 90% 12%, #E7D6C4 0, #E7D6C400 28%),
+    linear-gradient(135deg, #FFF8ED 0%, #F4E7D9 100%);
+  border-radius: 0 0 28px 28px;
 }
+
+.menu-intro::after {
+  content: "🥐";
+  position: absolute;
+  right: 18px;
+  bottom: -10px;
+  font-size: clamp(4rem, 16vw, 6rem);
+  opacity: 0.14;
+  transform: rotate(-15deg);
+}
+
 .eyebrow {
-  color: #8a9a5b;
+  position: relative;
+  z-index: 1;
+  color: var(--brunch-primary-strong);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.2em;
 }
-h1 {
+
+.menu-intro h1 {
+  position: relative;
+  z-index: 1;
   margin: 8px 0;
-  color: #3d3a32;
-  font-family: Georgia, serif;
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2rem, 8vw, 3rem);
   line-height: 1.02;
+  font-weight: 500;
 }
-h1 em {
-  color: #a66a4c;
+
+.menu-intro h1 em {
+  color: var(--brunch-accent);
   font-weight: 400;
 }
+
 .menu-intro > p:last-child {
-  color: #777267;
-  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+  color: var(--brunch-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0;
 }
+
 .filters {
-  padding: 12px 12px 4px;
-  background: #fbf9f4;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 13px 12px 8px;
+  background: var(--brunch-bg);
 }
+
 ion-searchbar {
-  --background: white;
-  --border-radius: 12px;
-  --box-shadow: 0 2px 12px #3d3a320c;
+  --background: #FFFFFF;
+  --color: var(--brunch-text);
+  --placeholder-color: #A99B8E;
+  --icon-color: #9B8C7D;
+  --border-radius: 15px;
+  --box-shadow: 0 3px 14px var(--brunch-shadow);
   padding: 0 0 10px;
 }
+
 ion-segment {
-  --background: #f0ece3;
-  border-radius: 12px;
+  --background: #F1EAE0;
+  border-radius: 15px;
+  padding: 4px;
 }
+
 ion-segment-button {
-  --indicator-color: #8a9a5b;
-  --color: #716e65;
-  --color-checked: white;
-  min-height: 38px;
+  --indicator-color: #A8B58A;
+  --indicator-box-shadow: none;
+  --color: #87796D;
+  --color-checked: #FFFFFF;
+  --border-radius: 11px;
+  min-height: 42px;
   font-size: 0.75rem;
+  font-weight: 700;
 }
+
+ion-segment-button::part(indicator-background) {
+  border-radius: 11px;
+}
+
 .product-grid {
   max-width: 1100px;
   padding: 14px 12px 20px;
 }
+
 .product-grid ion-col {
   padding: 7px;
 }
+
 .loading-state,
 .empty-state {
-  min-height: 220px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #777267;
+  color: var(--brunch-muted);
   text-align: center;
   padding: 24px;
 }
+
+.empty-state h2 {
+  color: var(--brunch-text);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+}
+
+.empty-state p {
+  color: var(--brunch-muted);
+}
+
 .loading-state ion-spinner {
-  color: #8a9a5b;
+  color: var(--brunch-primary-strong);
 }
-.price-disclaimer {
-  margin: 9px 18px 0;
-  color: #918b7e;
-  font-size: 0.7rem;
-}
+
 .api-note {
   margin: 8px 18px 0;
-  font-size: 0.75rem;
+  padding: 10px 13px;
+  color: var(--brunch-muted);
+  background: #F5EDE2;
+  border-left: 3px solid var(--brunch-primary);
+  border-radius: 8px;
+  font-size: 0.78rem;
 }
+
 .bottom-space {
-  height: 20px;
+  height: 24px;
 }
+
 @media (min-width: 700px) {
   .menu-intro,
   .filters {
     padding-left: max(24px, calc((100% - 900px) / 2));
     padding-right: max(24px, calc((100% - 900px) / 2));
   }
+
   .product-grid {
     margin: auto;
     padding: 22px;
   }
+
   .product-grid ion-col {
     padding: 10px;
   }

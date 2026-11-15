@@ -6,7 +6,9 @@
     </ion-button>
     <ion-button slot="end" fill="clear" routerLink="/tabs/carrito" aria-label="Abrir carrito">
       <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
-      @if (cart.totalItems() > 0) { <ion-badge color="success">{{ cart.totalItems() }}</ion-badge> }
+      @if (cart.totalItems() > 0) {
+        <ion-badge>{{ cart.totalItems() }}</ion-badge>
+      }
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -25,44 +27,48 @@
       (ionInput)="onSearch($event)"
       aria-label="Buscar platos"
     ></ion-searchbar>
-    <ion-segment [value]="selectedCategory" (ionChange)="selectedCategory = $any($event).detail.value" scrollable>
+    <ion-segment [value]="selectedCategory()" (ionChange)="onCategoryChange($event)" scrollable>
       @for (category of categories; track category) {
-      <ion-segment-button [value]="category"><ion-label>{{ category }}</ion-label></ion-segment-button>
+        <ion-segment-button [value]="category"><ion-label>{{ category }}</ion-label></ion-segment-button>
       }
     </ion-segment>
   </div>
 
-  @if (usingLocalMenu && !loading) {
-  <ion-text color="medium"
-    ><p class="api-note">Mostrando el menú de respaldo. No fue posible conectar con el servicio externo.</p></ion-text
-  >
-  } @if (loading) {
-  <div class="loading-state">
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Cargando nuestro menú...</p>
-  </div>
+  @if (loading()) {
+    <div class="loading-state">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando nuestro menú...</p>
+    </div>
   } @else {
-  <ion-grid fixed class="product-grid" aria-label="Productos disponibles">
-    <ion-row>
-      @for (product of filteredProducts; track product.id) {
-      <ion-col size="12" size-sm="6" size-lg="4">
-        <app-product-card [product]="product" (add)="addToCart($event)"></app-product-card>
-      </ion-col>
-      } @empty {
-      <ion-col size="12">
-        <div class="empty-state">
-          <h2>No encontramos platos</h2>
-          <p>Prueba con otra búsqueda o categoría.</p>
-        </div>
-      </ion-col>
-      }
-    </ion-row>
-  </ion-grid>
+    @if (usingLocalMenu()) {
+      <ion-text color="medium">
+        <p class="api-note">Mostrando el menú de respaldo. No fue posible conectar con el servicio externo.</p>
+      </ion-text>
+    }
+
+    <ion-grid fixed class="product-grid" aria-label="Productos disponibles">
+      <ion-row>
+        @for (product of filteredProducts(); track product.id) {
+          <ion-col size="12" size-sm="6" size-lg="4">
+            <app-product-card [product]="product" (add)="addToCart($event)"></app-product-card>
+          </ion-col>
+        } @empty {
+          <ion-col size="12">
+            <div class="empty-state">
+              <h2>No encontramos platos</h2>
+              <p>Prueba con otra búsqueda o categoría.</p>
+            </div>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
   }
+
   <div class="bottom-space"></div>
+
   <ion-toast
-    [isOpen]="toastOpen"
-    [message]="toastMessage"
+    [isOpen]="toastOpen()"
+    [message]="toastMessage()"
     duration="1800"
     position="bottom"
     color="success"

@@ -1,1 +1,27 @@
+ion-tab-bar {
+  --background: #FFFFFF;
+  --border: 1px solid var(--brunch-line);
+  --color: #9B8C7D;
+  --color-selected: var(--brunch-primary-strong);
+  min-height: 62px;
+  padding: 5px 4px env(safe-area-inset-bottom);
+  box-shadow: 0 -5px 20px #80634F0D;
+}
 
+ion-tab-button {
+  --color: #9B8C7D;
+  --color-selected: var(--brunch-primary-strong);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+ion-tab-button ion-icon {
+  font-size: 1.35rem;
+  margin-bottom: 3px;
+}
+
+ion-tab-button ion-badge {
+  --background: var(--brunch-accent);
+  --color: #FFFFFF;
+  font-size: 0.62rem;
+}
