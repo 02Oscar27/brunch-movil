@@ -1,0 +1,57 @@
+
+<ion-card class="product-card">
+
+  <div class="image-wrap">
+    <ion-img
+      [src]="product().imagen"
+      [alt]="product().nombre">
+    </ion-img>
+  </div>
+
+  <ion-card-header>
+    <ion-card-subtitle>
+      {{ product().categoria }}
+    </ion-card-subtitle>
+
+    <ion-card-title>
+      {{ product().nombre }}
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <p class="description">
+      {{ product().descripcion }}
+    </p>
+
+    @if (product().ingredientes.length) {
+      <p class="ingredients">
+        <strong>Ingredientes:</strong>
+        {{ product().ingredientes.slice(0, 5).join(', ') }}
+      </p>
+    }
+
+    <div class="card-footer">
+
+      <strong class="price">
+        {{ product().precio | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+      </strong>
+
+      <ion-button
+        size="small"
+        (click)="add.emit(product())"
+        aria-label="Agregar {{ product().nombre }} al carrito">
+
+        <ion-icon
+          slot="start"
+          name="add-outline">
+        </ion-icon>
+
+        Agregar
+      </ion-button>
+
+    </div>
+
+  </ion-card-content>
+
+</ion-card>

@@ -2,32 +2,13 @@ import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-import {
-  IonAlert,
-  IonBadge,
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonThumbnail,
-  IonTitle,
-  IonToast,
-  IonToolbar,
-} from '@ionic/angular';
+import {IonAlert,IonBadge,IonButton,IonCard,IonCardContent,IonContent,
+  IonHeader,IonIcon,IonItem,IonLabel,IonList,IonThumbnail,IonTitle,IonToast,
+  IonToolbar,} from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
-import {
-  addOutline,
-  arrowBackOutline,
-  checkmarkCircleOutline,
-  removeOutline,
-  trashOutline,
-} from 'ionicons/icons';
+import {addOutline,arrowBackOutline,checkmarkCircleOutline,removeOutline,
+  trashOutline,} from 'ionicons/icons';
 import { CartService } from '../../services/cart-service';
 
 @Component({
@@ -89,8 +70,7 @@ export class CartPage {
     this.clearAlertOpen = true;
   }
 
-  // Simulación académica: no procesa pagos ni envía pedidos.
-  // Al confirmar la compra se vacía el carrito para que no quede el pedido anterior.
+
   completePurchase(): void {
     if (this.cart.items().length === 0) return;
     this.cart.clear();

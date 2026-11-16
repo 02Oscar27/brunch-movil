@@ -1,31 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy,Component,DestroyRef,computed,inject,signal,} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  IonBadge,
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonToast,
-  IonIcon,
-  IonLabel,
-  IonSearchbar,
-  IonSegment,
-  IonSegmentButton,
-  IonSpinner,
-  IonText,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular';
+import {IonBadge,IonButton,IonContent,IonHeader,IonGrid,IonRow,IonCol,IonToast,IonIcon,
+  IonLabel,IonSearchbar,IonSegment,IonSegmentButton,IonSpinner,IonText,IonTitle,
+  IonToolbar,} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { cartOutline, refreshOutline } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
@@ -101,7 +78,6 @@ export class Tab2Page {
   loadProducts(forceRefresh = false): void {
     this.loading.set(true);
 
-    // getMenu() nunca falla: si la API no responde devuelve el menú local.
     this.productService
       .getMenu(forceRefresh)
       .pipe(takeUntilDestroyed(this.destroyRef))
