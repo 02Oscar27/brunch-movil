@@ -2,6 +2,7 @@ import { Component, EnvironmentInjector, inject } from '@angular/core';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { homeOutline, restaurantOutline, calendarOutline, cartOutline } from 'ionicons/icons';
+
 import { CartService } from '../services/cart-service';
 
 @Component({

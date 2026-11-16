@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
 import {
   IonAlert,
   IonBadge,
@@ -19,7 +18,6 @@ import {
   IonToast,
   IonToolbar,
 } from '@ionic/angular';
-
 import { addIcons } from 'ionicons';
 import {
   addOutline,
@@ -28,6 +26,7 @@ import {
   removeOutline,
   trashOutline,
 } from 'ionicons/icons';
+
 import { CartService } from '../../services/cart-service';
 
 @Component({
@@ -69,7 +68,7 @@ export class CartPage {
     {
       text: 'Sí, vaciar',
       role: 'destructive',
-      handler: () => {
+      handler: (): void => {
         this.cart.clear();
         this.showToast('Se vació el carrito');
       },

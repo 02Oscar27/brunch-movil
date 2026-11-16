@@ -1,7 +1,9 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, shareReplay, timeout } from 'rxjs';
-import { Category, Product } from '../models/product-model';
+import { Injectable, inject } from '@angular/core';
+import type { Observable} from 'rxjs';
+import { catchError, map, of, shareReplay, timeout } from 'rxjs';
+
+import type { Category, Product } from '../models/product-model';
 
 interface DummyRecipe {
   id: number;
