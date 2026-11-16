@@ -30,7 +30,6 @@ export interface MenuResult {
 const API_URL = 'https://dummyjson.com/recipes?limit=30';
 const REQUEST_TIMEOUT_MS = 10000;
 
-// Precios de demostración: deben reemplazarse por los precios reales del restaurante.
 const PRECIOS_DEMO: readonly number[] = [16000, 18000, 20000, 22000, 24000, 26000];
 
 const MENU_LOCAL: readonly Product[] = [
@@ -90,10 +89,6 @@ const MENU_LOCAL: readonly Product[] = [
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/* Diccionarios de traducción (se crean una sola vez, no en cada call) */
-/* ------------------------------------------------------------------ */
-
 const KNOWN_NAMES: Record<string, string> = {
   'tomato basil bruschetta': 'Bruschetta de tomate y albahaca',
   'chicken biryani': 'Biryani de pollo',
@@ -107,7 +102,6 @@ const KNOWN_NAMES: Record<string, string> = {
   'quinoa salad': 'Ensalada de quinoa',
 };
 
-// Frases completas: se reemplazan antes que las palabras sueltas.
 const PHRASES: Record<string, string> = {
   'all-purpose flour': 'harina de trigo',
   'olive oil': 'aceite de oliva',
@@ -135,7 +129,6 @@ const PHRASES: Record<string, string> = {
 };
 
 const WORDS: Record<string, string> = {
-  // Ingredientes
   chicken: 'pollo', tomato: 'tomate', tomatoes: 'tomates', basil: 'albahaca',
   spinach: 'espinaca', onion: 'cebolla', onions: 'cebollas', garlic: 'ajo',
   salt: 'sal', pepper: 'pimienta', rice: 'arroz', flour: 'harina',
@@ -159,13 +152,11 @@ const WORDS: Record<string, string> = {
   cookie: 'galleta', pizza: 'pizza', burger: 'hamburguesa', sandwich: 'sándwich',
   pancakes: 'pancakes', waffle: 'waffle', waffles: 'waffles', fruit: 'fruta',
 
-  // Preparación y adjetivos
   fresh: 'fresco', chopped: 'picado', diced: 'en cubos', sliced: 'en rodajas',
   ground: 'molido', shredded: 'rallado', grated: 'rallado', cooked: 'cocido',
   raw: 'crudo', dried: 'seco', frozen: 'congelado', roasted: 'asado',
   grilled: 'a la parrilla', creamy: 'cremoso', spicy: 'picante', classic: 'clásico',
 
-  // Conectores
   with: 'con', and: 'y', or: 'o', for: 'para', soup: 'sopa', salad: 'ensalada',
   vegetable: 'vegetal', vegetables: 'verduras',
 };
@@ -190,11 +181,7 @@ function capitalize(text: string): string {
   return text.charAt(0).toLocaleUpperCase('es') + text.slice(1);
 }
 
-/**
- * Traducción simple por diccionario. Limitación conocida: no reordena
- * palabras (ej.: "vegetable oil" queda "vegetal aceite"). Para un menú real
- * conviene tener los textos en español en tu propio JSON o backend.
- */
+
 function translate(text: string): string {
   let result = text.trim().toLowerCase();
 
@@ -216,12 +203,6 @@ function translateRecipeName(name: string): string {
   return lookup(KNOWN_NAMES, name.trim().toLowerCase()) ?? translate(name);
 }
 
-/* ------------------------------------------------------------------ */
-/* Clasificación y descripciones                                       */
-/* ------------------------------------------------------------------ */
-
-// Clasificación conservadora: solo se usa el nombre de la receta, para que
-// palabras sueltas de las instrucciones no clasifiquen mal los platos.
 const BREAKFAST_NAMES = [
   'pancake', 'waffle', 'omelette', 'omelet', 'french toast',
   'scrambled egg', 'fried egg', 'poached egg', 'breakfast',
@@ -270,10 +251,7 @@ function buildDescription(category: Category, ingredients: string[]): string {
   return main.length ? `${intro[category]} con ${joinList(main)}.` : `${intro[category]}.`;
 }
 
-/* ------------------------------------------------------------------ */
-/* Servicio                                                            */
-/* ------------------------------------------------------------------ */
-
+//Servicio                        
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private readonly http = inject(HttpClient);

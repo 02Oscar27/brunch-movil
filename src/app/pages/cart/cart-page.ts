@@ -1,6 +1,8 @@
+
 import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 import {
   IonAlert,
   IonBadge,
@@ -16,23 +18,27 @@ import {
   IonThumbnail,
   IonTitle,
   IonToast,
-  IonToolbar,
+  IonToolbar
 } from '@ionic/angular';
+
 import { addIcons } from 'ionicons';
+
 import {
   addOutline,
   arrowBackOutline,
   checkmarkCircleOutline,
   removeOutline,
-  trashOutline,
+  trashOutline
 } from 'ionicons/icons';
 
 import { CartService } from '../../services/cart-service';
 
 @Component({
   selector: 'app-cart',
+  standalone: true,
   templateUrl: './cart-page.html',
   styleUrls: ['./cart-page.scss'],
+
   imports: [
     CurrencyPipe,
     RouterLink,
@@ -50,10 +56,11 @@ import { CartService } from '../../services/cart-service';
     IonThumbnail,
     IonTitle,
     IonToast,
-    IonToolbar,
-  ],
+    IonToolbar
+  ]
 })
 export class CartPage {
+
   readonly cart = inject(CartService);
 
   toastOpen = false;
@@ -63,7 +70,7 @@ export class CartPage {
   readonly clearAlertButtons = [
     {
       text: 'Cancelar',
-      role: 'cancel',
+      role: 'cancel'
     },
     {
       text: 'Sí, vaciar',
@@ -71,12 +78,18 @@ export class CartPage {
       handler: (): void => {
         this.cart.clear();
         this.showToast('Se vació el carrito');
-      },
-    },
+      }
+    }
   ];
 
   constructor() {
-    addIcons({ addOutline, arrowBackOutline, checkmarkCircleOutline, removeOutline, trashOutline });
+    addIcons({
+      addOutline,
+      arrowBackOutline,
+      checkmarkCircleOutline,
+      removeOutline,
+      trashOutline
+    });
   }
 
   removeProduct(productId: number, productName: string): void {
@@ -88,10 +101,9 @@ export class CartPage {
     this.clearAlertOpen = true;
   }
 
-  // Simulación académica: no procesa pagos ni envía pedidos.
-  // Al confirmar la compra se vacía el carrito para que no quede el pedido anterior.
   completePurchase(): void {
     if (this.cart.items().length === 0) return;
+
     this.cart.clear();
     this.showToast('Compra realizada exitosamente');
   }
