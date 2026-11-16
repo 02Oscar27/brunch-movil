@@ -1,7 +1,9 @@
-import type { ComponentFixture } from '@angular/core/testing';
-import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+
 import { Tab2Page } from './tab2.page';
 
 describe('Tab2Page', () => {
@@ -12,7 +14,7 @@ describe('Tab2Page', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Tab2Page],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Tab2Page);

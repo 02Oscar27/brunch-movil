@@ -1,6 +1,7 @@
-import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
+import { provideHttpClient } from '@angular/common/http';
 import localeEsCo from '@angular/common/locales/es-CO';
+import { LOCALE_ID } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   RouteReuseStrategy,
@@ -10,7 +11,6 @@ import {
   PreloadAllModules,
 } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular';
-import { provideHttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';

@@ -1,5 +1,7 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
-import { CartItem, Product, isCategory } from '../models/product-model';
+
+import type { CartItem, Product} from '../models/product-model';
+import { isCategory } from '../models/product-model';
 
 const STORAGE_KEY = 'brunch-movil-cart-v1';
 

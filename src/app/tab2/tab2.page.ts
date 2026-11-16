@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import {
   IonBadge,
   IonButton,
@@ -28,11 +29,12 @@ import {
 } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { cartOutline, refreshOutline } from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
-import { CATEGORIES, Category, Product, isCategory } from '../models/product-model';
+
+import { ProductCardComponent } from '../components/product-card/cardcomponents';
+import type { Category, Product} from '../models/product-model';
+import { CATEGORIES, isCategory } from '../models/product-model';
 import { CartService } from '../services/cart-service';
 import { ProductService } from '../services/product-service';
-import { ProductCardComponent } from '../components/product-card/cardcomponents';
 
 type CategoryFilter = 'Todos' | Category;
 

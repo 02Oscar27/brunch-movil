@@ -14,3 +14,7 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+  // Simular el desplazamiento de elementos en las pruebas
+  if (typeof Element.prototype.scrollTo !== 'function') {
+    Element.prototype.scrollTo = (): void => undefined;
+  }

@@ -1,5 +1,5 @@
-import { Component, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { Component, input, output } from '@angular/core';
 import {
   IonButton,
   IonCard,
@@ -12,7 +12,8 @@ import {
 } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
-import { Product } from '../../models/product-model';
+
+import type { Product } from '../../models/product-model';
 
 @Component({
   selector: 'app-product-card',
