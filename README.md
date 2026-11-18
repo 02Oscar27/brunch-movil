@@ -1,8 +1,8 @@
-# Brunch Móvil ☕🍳
+# Brunch Móvil 
 
 Aplicación móvil desarrollada con **Ionic, Angular, TypeScript y Capacitor**, orientada a ofrecer una experiencia sencilla para consultar un menú de brunch, agregar productos a un carrito, realizar una reserva y consultar la ubicación actual del dispositivo.
 
-## 📱 Descripción del proyecto
+##  Descripción del proyecto
 
 Brunch Móvil reúne en una sola aplicación las funciones principales de un restaurante:
 
@@ -18,7 +18,7 @@ Brunch Móvil reúne en una sola aplicación las funciones principales de un res
 
 La aplicación utiliza componentes de Ionic para la interfaz y Capacitor para acceder a funcionalidades nativas del dispositivo.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### 1. Inicio
 
@@ -53,8 +53,6 @@ El carrito permite:
 
 El contenido se conserva mediante `localStorage`, por lo que puede recuperarse al volver a abrir la aplicación en el mismo almacenamiento del dispositivo o navegador.
 
-> **Nota:** la opción «Realizar compra» es una simulación. Actualmente no procesa pagos ni se conecta con una pasarela de pago.
-
 ### 4. Reservas
 
 El formulario permite registrar:
@@ -70,7 +68,7 @@ Los horarios permitidos están configurados entre las 8:00 a. m. y las 3:30 p. m
 
 Las reservas se guardan localmente con **Capacitor Preferences**. La función de consulta muestra la última reserva guardada; no se utiliza actualmente un servidor o base de datos remota para administrar reservas.
 
-## 🧰 Tecnologías y herramientas
+## Tecnologías y herramientas
 
 | Tecnología | Uso en el proyecto |
 |---|---|
@@ -85,7 +83,7 @@ Las reservas se guardan localmente con **Capacitor Preferences**. La función de
 | `localStorage` | Persistencia local de los productos del carrito. |
 | Ionicons | Iconos de la interfaz. |
 
-## 📂 Estructura principal del proyecto
+## Estructura principal del proyecto
 
 ```text
 brunch-movil/
@@ -126,7 +124,7 @@ brunch-movil/
 └── README.md
 ```
 
-## ⚙️ Requisitos previos
+## Requisitos previos
 
 Antes de instalar el proyecto, se recomienda tener:
 
@@ -137,7 +135,7 @@ Antes de instalar el proyecto, se recomienda tener:
 
 El proyecto utiliza Angular 22, Ionic Angular 9 y Capacitor 8. Consulta las versiones de dependencias declaradas en `package.json` y utiliza una versión de Node.js compatible con Angular 22.
 
-## 🚀 Instalación y ejecución
+## Instalación y ejecución
 
 ### 1. Clonar el repositorio
 
@@ -170,7 +168,7 @@ npm run build
 
 La compilación web se genera en el directorio `www` configurado para Capacitor.
 
-## 📲 Ejecutar en Android
+##  Ejecutar en Android
 
 El proyecto incluye la plataforma Android de Capacitor. Después de compilar la aplicación web, sincroniza los cambios con el proyecto nativo:
 
@@ -202,7 +200,7 @@ adb devices
 
 5. Abre el proyecto con Android Studio y ejecuta la aplicación en el dispositivo.
 
-## 🧠 Organización de la lógica
+## Organización de la lógica
 
 La aplicación separa las responsabilidades principales:
 
@@ -216,7 +214,7 @@ La aplicación separa las responsabilidades principales:
 - **ReservasService:** guarda y recupera la última reserva mediante Capacitor Preferences.
 - **Tab1Page:** presenta la información inicial y obtiene la ubicación del dispositivo mediante Capacitor Geolocation.
 
-## 🧪 Scripts disponibles
+##  Scripts disponibles
 
 Los siguientes comandos están definidos en `package.json`:
 
@@ -231,29 +229,9 @@ Los siguientes comandos están definidos en `package.json`:
 | `npm run test:unit` | Ejecuta las pruebas unitarias sin modo watch. |
 | `npm run test:e2e` | Ejecuta las pruebas de extremo a extremo con Playwright. |
 
-## 🔐 Permisos y almacenamiento
+## Permisos y almacenamiento
 
 - **Ubicación:** la aplicación solicita permiso para acceder a la ubicación del dispositivo. El usuario puede rechazarlo; en ese caso se muestra un mensaje y no se presentan coordenadas.
 - **Carrito:** se guarda en `localStorage` usando la clave `brunch-movil-cart-v1`.
 - **Reservas:** se guarda la última reserva en Capacitor Preferences usando la clave `ultimaReserva`.
 - **Conexión:** el menú intenta consultar DummyJSON. Si la consulta falla o no contiene recetas, utiliza los productos locales de respaldo.
-
-## ⚠️ Alcance actual
-
-- Los precios del menú obtenido desde la API son valores de demostración definidos en el código.
-- La compra no procesa pagos reales.
-- Las reservas se almacenan localmente y la consulta recupera únicamente la última reserva guardada en ese dispositivo; no hay sincronización con un servidor.
-- El funcionamiento del menú remoto requiere conexión a internet. El menú local permite mostrar productos cuando la API no está disponible.
-
-## 👥 Contribución
-
-Para trabajar en el proyecto:
-
-1. Crea una rama para tu funcionalidad o corrección.
-2. Realiza los cambios y prueba la aplicación.
-3. Ejecuta la compilación para comprobar que no existan errores.
-4. Envía los cambios a GitHub y crea un Pull Request para integrarlos con la rama principal.
-
-## 📄 Licencia
-
-No se especifica una licencia en la configuración actual del proyecto. Si se va a publicar o distribuir el repositorio, se recomienda definir una licencia de acuerdo con las condiciones del equipo o de la institución.
