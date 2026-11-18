@@ -1,7 +1,5 @@
-
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-
 import {
   IonButton,
   IonCard,
@@ -12,7 +10,6 @@ import {
   IonIcon,
   IonImg
 } from '@ionic/angular';
-
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
 

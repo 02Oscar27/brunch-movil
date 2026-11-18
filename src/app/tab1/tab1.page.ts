@@ -41,7 +41,7 @@ export class Tab1Page {
 
   descripcion: string = 'Disfruta de nuestros desayunos, bebidas y platos especiales.'
 
-  horario: string =  'Lunes a domingo, 8:00 a. m. - 4:00 p. m.';
+  horario: string =  'Lunes a domingo, 8:00 a. m. - 3:30 p. m.';
 
   //Datos de geolocalizacion
   latitud: number | null = null;

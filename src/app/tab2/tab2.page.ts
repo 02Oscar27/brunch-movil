@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,10 +6,8 @@ import {
   inject,
   signal
 } from '@angular/core';
-
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-
 import {
   IonBadge,
   IonButton,
@@ -30,15 +27,12 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular';
-
 import { addIcons } from 'ionicons';
 import { cartOutline, refreshOutline } from 'ionicons/icons';
 
 import { ProductCardComponent } from '../components/product-card/cardcomponents';
-
 import type { Category, Product } from '../models/product-model';
 import { CATEGORIES, isCategory } from '../models/product-model';
-
 import { CartService } from '../services/cart-service';
 import { ProductService } from '../services/product-service';
 

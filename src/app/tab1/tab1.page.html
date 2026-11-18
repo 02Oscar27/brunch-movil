@@ -1,85 +1,107 @@
+
 <ion-header>
   <ion-toolbar>
-
-    <ion-title> Brunch Móvil </ion-title>
-
+    <ion-title>Brunch Móvil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="home-content ion-padding">
+<ion-content class="home-content">
+  <main class="home-container">
 
-  <section class="bienvenida">
+    <!-- Bienvenida -->
+    <section class="hero">
+      <p class="eyebrow">BRUNCH MÓVIL</p>
 
-    <h1>Bienvenidos a {{ nombreRestaurante }}</h1>
+      <h1>
+        Un buen día empieza
+        <em>con un brunch.</em>
+      </h1>
 
-    <p>{{ descripcion }}</p>
+      <p class="hero-description">
+        Explora nuestros platos, elige tus favoritos
+        y solicita una mesa desde tu celular.
+      </p>
 
-    <ion-button
-    expand="block"
-    routerLink="/tabs/tab2">
-      Explorar menú
-    </ion-button>
-  </section>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Un lugar para disfrutar</ion-card-title>
-    </ion-card-header>
+      <div class="hero-actions">
+        <ion-button routerLink="/tabs/tab2">
+          Explorar menú
+        </ion-button>
 
-    <ion-card-content>
-      Descubre nuestros platos preparados con ingredientes
-      frescos y disfruta de una experiencia especial.
-    </ion-card-content>
+        <ion-button fill="outline" routerLink="/tabs/tab3">
+          Reservar mesa
+        </ion-button>
+      </div>
+    </section>
 
-  </ion-card>
+    <!-- Funciones principales -->
+    <section class="features">
 
-  <ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Explora el menú</ion-card-title>
+        </ion-card-header>
 
-    <ion-card-header>
-      <ion-card-title>Horarios de atención</ion-card-title>
-    </ion-card-header>
+        <ion-card-content>
+          Consulta nuestros platos, conoce sus ingredientes
+          y revisa los precios antes de elegir.
+        </ion-card-content>
+      </ion-card>
 
-    <ion-card-content>
-      {{ horario }}
-    </ion-card-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Solicita tu reserva</ion-card-title>
+        </ion-card-header>
 
-  </ion-card>
+        <ion-card-content>
+          Elige una fecha, una hora y el número de personas
+          para registrar tu solicitud de reserva.
+        </ion-card-content>
+      </ion-card>
 
-  <ion-button
-  expand="block"
-  fill="outline"
-  routerLink="/tabs/tab3">
-    Realizar reserva
-  </ion-button>
+    </section>
 
-  <!--Geolocalizacion-->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Mi ubicación
-      </ion-card-title>
-    </ion-card-header>
 
-    <ion-card-content>
+    <!-- Información del restaurante -->
+    <ion-card class="info-card">
+      <ion-card-content>
+        <p class="info-label">HORARIOS DE ATENCIÓN</p>
+        <strong>{{ horario }}</strong>
+      </ion-card-content>
+    </ion-card>
 
-      <p>Consulta tu ubicación actual.</p>
+    <!-- Geolocalización -->
+    <ion-card class="location-card">
+      <ion-card-header>
+        <ion-card-title>Mi ubicación</ion-card-title>
+      </ion-card-header>
 
-      <ion-button
-      expand="block"
-      [disabled]="cargandoUbicacion"
-      (click)="obtenerUbicacion()">
-        {{ cargandoUbicacion ?
-        'Obteniendo ubicación...' : 'Obtener mi ubicación' }}
-      </ion-button>
+      <ion-card-content>
+        <p>
+          Consulta la ubicación actual de tu dispositivo.
+        </p>
 
-      <p>{{ mensajeUbicacion }}</p>
+        <ion-button
+          expand="block"
+          [disabled]="cargandoUbicacion"
+          (click)="obtenerUbicacion()">
+          {{ cargandoUbicacion
+            ? 'Obteniendo ubicación...'
+            : 'Obtener mi ubicación' }}
+        </ion-button>
 
-      @if (latitud !== null && longitud !== null) {
-        <p>Latitud: {{ latitud }}</p>
-        <p>Longuitud: {{ longitud }}</p>
-        <p>Precisión: {{ precision }} metros</p>
-      }
+        <p class="location-message" role="status">
+          {{ mensajeUbicacion }}
+        </p>
 
-    </ion-card-content>
-  </ion-card>
+        @if (latitud !== null && longitud !== null) {
+          <div class="coordinates">
+            <p><strong>Latitud:</strong> {{ latitud }}</p>
+            <p><strong>Longitud:</strong> {{ longitud }}</p>
+            <p><strong>Precisión:</strong> {{ precision }} metros</p>
+          </div>
+        }
+      </ion-card-content>
+    </ion-card>
 
-  </ion-content>
+  </main>
+</ion-content>
