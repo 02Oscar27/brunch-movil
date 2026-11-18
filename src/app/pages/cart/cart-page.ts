@@ -2,7 +2,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
 import {
   IonAlert,
   IonBadge,
@@ -20,9 +19,7 @@ import {
   IonToast,
   IonToolbar
 } from '@ionic/angular';
-
 import { addIcons } from 'ionicons';
-
 import {
   addOutline,
   arrowBackOutline,
