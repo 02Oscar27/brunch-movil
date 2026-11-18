@@ -88,7 +88,7 @@ export class CartPage {
       trashOutline
     });
   }
-
+//Este método elimina un producto específico.
   removeProduct(productId: number, productName: string): void {
     this.cart.remove(productId);
     this.showToast(`${productName} se eliminó del carrito`);

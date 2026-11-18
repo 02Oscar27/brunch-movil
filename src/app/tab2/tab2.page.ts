@@ -86,7 +86,7 @@ export class Tab2Page {
   readonly usingLocalMenu = signal(false);
   readonly toastOpen = signal(false);
   readonly toastMessage = signal('');
-
+//Filtrado de productos mediante computed
   readonly filteredProducts = computed(() => {
     const term = this.search().trim().toLocaleLowerCase();
     const category = this.selectedCategory();
@@ -110,7 +110,7 @@ export class Tab2Page {
     addIcons({ cartOutline, refreshOutline });
     this.loadProducts();
   }
-
+//Este método obtiene los productos desde ProductService
   loadProducts(forceRefresh = false): void {
     this.loading.set(true);
 
@@ -125,14 +125,14 @@ export class Tab2Page {
 
       });
   }
-
+//recibe el evento generado cuando el usuario escribe en el buscador.
   onSearch(event: Event): void {
     const value = (event as CustomEvent<{ value?: string | null }>)
       .detail?.value;
 
     this.search.set(value ?? '');
   }
-
+//recibe el evento que se produce cuando el usuario cambia la categoría
   onCategoryChange(event: Event): void {
     const value = (
       event as CustomEvent<{ value?: string | number | null }>
@@ -142,7 +142,7 @@ export class Tab2Page {
       isCategory(value) ? value : 'Todos'
     );
   }
-
+//conecta el menú con el carrito.
   addToCart(product: Product): void {
     this.cart.add(product);
 

@@ -161,6 +161,7 @@ const WORDS: Record<string, string> = {
   vegetable: 'vegetal', vegetables: 'verduras',
 };
 
+//agregan / a caracteres especicales para ser interpretados como normales
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -173,6 +174,7 @@ const PHRASE_RULES = Object.entries(PHRASES)
     replacement,
   }));
 
+//Esta función busca una palabra o frase dentro de un diccionario.
 function lookup(dictionary: Record<string, string>, key: string): string | undefined {
   return Object.prototype.hasOwnProperty.call(dictionary, key) ? dictionary[key] : undefined;
 }
@@ -181,7 +183,7 @@ function capitalize(text: string): string {
   return text.charAt(0).toLocaleUpperCase('es') + text.slice(1);
 }
 
-
+//Su objetivo es traducir textos e ingredientes al español
 function translate(text: string): string {
   let result = text.trim().toLowerCase();
 
@@ -233,6 +235,7 @@ function getCategory(recipe: DummyRecipe): Category {
   return 'Especiales';
 }
 
+//Esta función organiza una lista de ingredientes para presentarla como texto.
 function joinList(items: string[]): string {
   if (items.length <= 1) return items.join('');
   const last = items[items.length - 1];
@@ -251,7 +254,7 @@ function buildDescription(category: Category, ingredients: string[]): string {
   return main.length ? `${intro[category]} con ${joinList(main)}.` : `${intro[category]}.`;
 }
 
-//Servicio                        
+//evita tener que crear manualmente una instancia cada vez que se necesita consultar el menú.                     
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private readonly http = inject(HttpClient);
@@ -280,7 +283,7 @@ export class ProductService {
     return this.menuRequest;
   }
 
-  /** Solo la lista de productos (compatible con el código anterior). */
+  /** Solo la lista de productos */
   getProducts(forceRefresh = false): Observable<Product[]> {
     return this.getMenu(forceRefresh).pipe(map((menu) => menu.products));
   }

@@ -20,7 +20,7 @@ export class CartService {
   );
 
   constructor() {
-    // Cada cambio del carrito se guarda solo, sin llamar a saveCart a mano.
+    // Cada cambio del carrito se guarda solo sin llamar a saveCart a mano.
     effect(() => this.saveCart(this.itemsState()));
   }
 
@@ -65,7 +65,7 @@ export class CartService {
       return [];
     }
   }
-
+  //verifica que un elemento recuperado del almacenamiento local tenga la estructura necesaria.
   private isValidCartItem(value: unknown): value is CartItem {
     if (!value || typeof value !== 'object') return false;
     const item = value as Partial<CartItem>;
@@ -84,7 +84,7 @@ export class CartService {
       Array.isArray(product.ingredientes)
     );
   }
-
+//Este método guarda el carrito en el almacenamiento local del dispositivo o navegador
   private saveCart(items: CartItem[]): void {
     try {
       if (typeof localStorage === 'undefined') return;
